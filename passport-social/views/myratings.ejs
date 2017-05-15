@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+	<title>WatchNext|MyRatings</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<!--[if IE 6]>
+		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<![endif]-->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<!--<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>-->
+	<script type="text/javascript" src="js/jquery-func.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<!-- Shell -->
+<% include nav.ejs %>
+<div id="shell">
+	<!-- Main -->
+	<div id="main">
+		<!-- Content -->
+		<div id="content" class="container-fluid">
+		welcome <%=user%>
+			<!-- Box -->
+			<div class="box">
+				<div class="head">
+					<span>Movies already rated</span>
+					<br>
+					<br>
+				</div>
+			<% for(var i=0;i<movies.length;i++){%>
+				<!-- Movie -->
+				<div class="movie">
+					<div id="movie-image" class="movie-image">
+						<div id="rating" class="rating">
+					<div class="stars-green" data-alias="<%= user %>" data-movie_id="<%=movies[i].id%>" data-rating="<%=movies[i].rating%>" data-year="<%=movies[i].movie.Year%>" data-title="<%= movies[i].movie.Title %>"></div>
+					</div>
+					<% var url = "/movie_details/?a="+movies[i].movie.Title+"&y="+movies[i].movie.Year %>
+						<a class="movie-body" href="<%= url %>"><span class="play"><span class="name"><%= movies[i].movie.Title %></span></span><img src="<%= movies[i].movie.Poster %>" alt="movie" /></a>
+					</div>
+						
+				</div>
+			<% } %>
+				
+				<!-- end Movie -->
+				<div class="cl">&nbsp;</div>
+			</div>
+			<!-- end Box -->
+			
+		    <!-- Box -->
+			
+			<!-- end Box -->
+		<div class="cl">&nbsp;</div>
+	</div>
+	<!-- end Main -->
+</div>
+<!-- end Shell -->
+<!-- Footer -->
+	<div id="footer" class="footer">
+		<span>Made with &hearts; by Students of Dept of CSE</span>
+	</div>
+	<!-- end Footer -->
+</body>
+</html>
